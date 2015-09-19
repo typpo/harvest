@@ -1,0 +1,12 @@
+{
+  "name": "harvest",
+  "description": "harvest",
+  "version": "0.0.1",
+  "scripts": {
+    "start": "node harvest.js"
+  },
+  "dependencies": {
+    "body-parser": "latest",
+    "express": "latest"
+  }
+}
