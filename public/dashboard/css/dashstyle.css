@@ -7,17 +7,31 @@
   align-items: flex-start;
 }
 
-.grid_image {
+
+.grid_item {
   flex-grow: 0;
   flex-shrink: 0;
   flex-basis: 0;
   width: 300px;
-  height: 250px;
+  height: 286px;
   margin: 16px;
+}
+
+.grid_image {
+  width: 300px;
+  height: 250px;
 }
 
 .selected_grid_image {
   outline: none;
   border-color: #9ecaed;
   box-shadow: 0 0 20px #9ecaed;
+}
+
+.image_descriptor {
+  font-family: sans-serif;
+  font-size: 16px;
+  font-weight: bold;
+  margin: auto;
+  text-align: center;
 }
