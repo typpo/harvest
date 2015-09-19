@@ -7,6 +7,9 @@ PIPELINE_DIR = os.path.dirname(os.path.realpath(__file__))
 files = os.listdir(os.path.join(PIPELINE_DIR, 'images/original'))
 for filename in files:
     fullpath = os.path.join(PIPELINE_DIR, 'images/original/', filename)
-    print fullpath
+    outpath = os.path.join(PIPELINE_DIR, 'images/processed-nvdi/', filename)
 
-    infrapix_single -i $fullpath -o $fullpath_out
+    print fullpath, '-->', outpath
+
+    cmd = 'infrapix_single -i "%s" -o "%s"' % (fullpath, outpath)
+    os.system(cmd)
