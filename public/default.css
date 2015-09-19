@@ -311,11 +311,23 @@
 	#banner
 	{
 		overflow: hidden;
-		padding: 16.7em 0em;
+		padding: 12em 0em;
 		background: url(images/banner.jpg) no-repeat center;
 		background-size: cover;
 		border-top: 1px solid rgba(0,0,0,0.08);
-	}
+	  text-align: center;
+  }
+
+  #banner h2 {
+    color: white;
+    font-size: 4.5em;
+    padding-bottom: 0.2em;
+  }
+
+  #banner p {
+    color: white;
+    font-size: 2em;
+  }
 
 /*********************************************************************************/
 /* Page                                                                          */
