@@ -388,6 +388,10 @@
 		padding: 5em 0em;
 		border-top: 1px solid rgba(0,0,0,0.1);
 	}
+
+  #featured li {
+    margin-bottom: 3px;
+  }
 	
 	#featured .align-left
 	{
@@ -407,7 +411,7 @@
 	{
 		float: right;
 		width: 792px;
-		font-size: 1.4em;
+		font-size: 2.1em;
 	}
 
 
