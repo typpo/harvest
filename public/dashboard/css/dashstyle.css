@@ -1,5 +1,6 @@
 html, body, #wrapper {
   height: 100%;
+  background-color:white;
 }
 
 .image_container {
