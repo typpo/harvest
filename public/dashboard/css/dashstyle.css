@@ -2,6 +2,15 @@ html, body, #wrapper {
   height: 100%;
 }
 
+.weather-item {
+  padding-left: 2px;
+  padding-right: 2px;
+  border: 1px solid transparent;
+  border-right-width: 0.5px;
+  border-color: green;
+  border-radius: 4px;
+}
+
 .image_container {
   display:flex;
   flex-direction: row;
