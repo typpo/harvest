@@ -27,7 +27,7 @@ app.post('/contact', function(req, res) {
   fs.appendFile('log.txt', JSON.stringify(req.body) + '\n', encoding='utf8', function (err) {
       if (err) throw err;
   });
-  //serveFile('public/dashboard/landsat.html', res);
+  serveFile('public/contact.html', res);
 });
 
 app.get('/dashboard', function(req, res) {
