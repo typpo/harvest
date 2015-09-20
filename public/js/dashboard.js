@@ -82,7 +82,7 @@ function Dashboard() {
       unselect.removeClass(SELECTED_GRID_IMAGE_CLASS);
     }
     me.selectedItems_.push($gridItem);
-    if (me.selectedItems_.length == NUMBER_SELECTABLE) {
+    if (me.selectedItems_.length > 0) {
       me.showCompare();
     }
   };
@@ -99,11 +99,16 @@ function Dashboard() {
 
 
   Dashboard.prototype.compare = function() {
-    if (me.selectedItems_.length != NUMBER_SELECTABLE) {
-      return;
+    var $first, $second;
+    if (me.selectedItems_.length == NUMBER_SELECTABLE) {
+      $first = me.selectedItems_[0].find('.grid_image_processed');
+      $second = me.selectedItems_[1].find('.grid_image_processed');
+    } else if (me.selectedItems_.length == 1) {
+      $first = me.selectedItems_[0].find('.grid_image_normal');
+      $second = me.selectedItems_[0].find('.grid_image_processed');
     }
     $('.image_container').hide();
-    $('.cd-image-container').show();
+    $('#compare_module').show();
 
     var $pageWrapper = $('#page-wrapper');
     $('.cd-image-container').addClass('is-visible');
@@ -113,8 +118,6 @@ function Dashboard() {
     $og.width($pageWrapper.width() - 50);
     $diff.height($pageWrapper.height() - 50);
     $diff.width($pageWrapper.width() - 50);
-    var $first = me.selectedItems_[0].find('.grid_image_processed');
-    var $second = me.selectedItems_[1].find('.grid_image_processed');
     $og.attr('src', $first.attr('src'));
     $diff.attr('src', $second.attr('src'));
   };
