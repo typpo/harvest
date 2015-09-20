@@ -1,5 +1,26 @@
 html, body, #wrapper {
   height: 100%;
+  background-color:white;
+}
+
+.weatherday {
+  text-transform: UPPERCASE;
+  color: #999;
+  font-size: 12px;
+  margin-bottom: 10px;
+}
+
+.weather-row .panel {
+  height: 140px;
+}
+
+.weather-item {
+  padding-left: 2px;
+  padding-right: 2px;
+  border: 1px solid transparent;
+  border-right-width: 0.5px;
+  border-color: green;
+  border-radius: 4px;
 }
 
 .image_container {
@@ -9,7 +30,6 @@ html, body, #wrapper {
   justify-content: flex-start;
   align-content: flex-start;
   align-items: flex-start;
-  padding-top: 50px;
 }
 
 
@@ -17,7 +37,7 @@ html, body, #wrapper {
   flex-grow: 0;
   flex-shrink: 0;
   width: 300px;
-  height: 286px;
+  height: 250px;
   margin: 16px;
 }
 
@@ -82,6 +102,7 @@ html, body, #wrapper {
 
 #page-wrapper {
 height:100%;
+margin-top: 50px;
 }
 
 .grid_image_normal {

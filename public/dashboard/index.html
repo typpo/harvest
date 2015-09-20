@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>SB Admin - Bootstrap Admin Template</title>
+    <title>Harvest</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -61,7 +61,7 @@
                         <a href="index.html"><i class="fa fa-fw fa-dashboard"></i>Hotspots</a>
                     </li>
                     <li>
-                        <a href="charts.html"><i class="fa fa-fw fa-bar-chart-o"></i> Over time</a>
+                        <a href="charts.html"><i class="fa fa-fw fa-bar-chart-o"></i> Landsat</a>
                     </li>
                 </ul>
             </div>
@@ -69,9 +69,9 @@
         </nav>
 
         <div id="page-wrapper">
-
-            <div class="image_container">
-            </div>
+          <div class="image_container">
+          </div>
+          <div style="display:none;" id="compare_module">
             <figure class="cd-image-container">
               <img id='og_img'></img>
               <span class="cd-image-label" data-type="original">Original</span>
@@ -81,6 +81,7 @@
               </div>
               <span class="cd-handle"></span> <!-- slider handle -->
             </figure> <!-- cd-image-container -->
+          </div>
 
         </div>
         <!-- /#page-wrapper -->

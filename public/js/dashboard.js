@@ -13,23 +13,34 @@ function Dashboard() {
   var PROCESSED_PATH = '/ndvi-hsv/';
 
   Dashboard.prototype.init = function() {
-    this.selectedImages_ = [];
+    this.selectedItems_ = [];
     this.$compareButton = $('#compare_button');
-    $('.grid_image').click(this.handleGridClick);
     this.$compareButton.click(this.compare);
 
     var $imageContainer = $('.image_container');
     for (var i in IMAGES) {
       $imageContainer.append(this.createGridItem(IMAGES[i]));
     }
+    $('.grid_item').click(this.handleGridClick);
 
     $('.image_switcher').mouseenter(function() {
-      $(this).find('.grid_image_normal').css('z-index', 0);
-      $(this).find('.grid_image_processed').css('z-index', 1);
+      $(this).find('.grid_image_normal').fadeOut(400);
+      $(this).find('.grid_image_processed').fadeIn(400);;
     });
     $('.image_switcher').mouseleave(function() {
-      $(this).find('.grid_image_normal').css('z-index', 1);
-      $(this).find('.grid_image_processed').css('z-index', 0);
+      if ($(this).find('.grid_image_normal').length > 0) {
+        $(this).find('.grid_image_normal').stop();
+        $(this).find('.grid_image_normal').fadeIn({
+          duration: 200,
+          queue: false
+        });
+
+        $(this).find('.grid_image_processed').stop();
+        $(this).find('.grid_image_processed').fadeOut({
+          duration: 200,
+          queue: false
+        });
+      }
     });
 
 
@@ -39,7 +50,7 @@ function Dashboard() {
         var actual = $(this);
         drags(actual.find('.cd-handle'), actual.find('.cd-resize-img'), actual);
     });
-    
+
     getWeatherData();
   };
 
@@ -52,35 +63,36 @@ function Dashboard() {
                   '<img class="grid_image grid_image_processed" src="' + PROCESSED_PATH + image + '">' +
                 '</div>' +
                 '<div class="image_descriptor">' +
-                  '10-23-2014' +
                 '</div>' +
               '</div>');
     return item;
   };
 
   Dashboard.prototype.handleGridClick = function(event) {
-    var $img = $(event.target);
+    // hack to get grid item
+    var $gridItem = $(event.target).parent().parent();
+    var $img = $gridItem.find('.grid_image_processed');
     var toRemove = -1;
-    for (var i in me.selectedImages_) {
-      var $otherImg = me.selectedImages_[i];
-      if ($img[0] == $otherImg[0]) {
+    for (var i in me.selectedItems_) {
+      var $otherItem = me.selectedItems_[i];
+      if ($gridItem[0] == $otherItem[0]) {
         toRemove = i;
         break;
       }
     }
     if (toRemove != -1) {
-      me.selectedImages_.splice(toRemove, 1);
-      $img.removeClass(SELECTED_GRID_IMAGE_CLASS);
+      me.selectedItems_.splice(toRemove, 1);
+      $gridItem.removeClass(SELECTED_GRID_IMAGE_CLASS);
       me.hideCompare();
       return;
     }
-    $img.addClass(SELECTED_GRID_IMAGE_CLASS);
-    if (me.selectedImages_.length >= NUMBER_SELECTABLE) {
-      var unselect = me.selectedImages_.splice(0,1)[0];
+    $gridItem.addClass(SELECTED_GRID_IMAGE_CLASS);
+    if (me.selectedItems_.length >= NUMBER_SELECTABLE) {
+      var unselect = me.selectedItems_.splice(0,1)[0];
       unselect.removeClass(SELECTED_GRID_IMAGE_CLASS);
     }
-    me.selectedImages_.push($img);
-    if (me.selectedImages_.length == NUMBER_SELECTABLE) {
+    me.selectedItems_.push($gridItem);
+    if (me.selectedItems_.length > 0) {
       me.showCompare();
     }
   };
@@ -97,11 +109,16 @@ function Dashboard() {
 
 
   Dashboard.prototype.compare = function() {
-    if (me.selectedImages_.length != NUMBER_SELECTABLE) {
-      return;
+    var $first, $second;
+    if (me.selectedItems_.length == NUMBER_SELECTABLE) {
+      $first = me.selectedItems_[0].find('.grid_image_processed');
+      $second = me.selectedItems_[1].find('.grid_image_processed');
+    } else if (me.selectedItems_.length == 1) {
+      $first = me.selectedItems_[0].find('.grid_image_normal');
+      $second = me.selectedItems_[0].find('.grid_image_processed');
     }
     $('.image_container').hide();
-    $('.cd-image-container').show();
+    $('#compare_module').show();
 
     var $pageWrapper = $('#page-wrapper');
     $('.cd-image-container').addClass('is-visible');
@@ -111,15 +128,24 @@ function Dashboard() {
     $og.width($pageWrapper.width() - 50);
     $diff.height($pageWrapper.height() - 50);
     $diff.width($pageWrapper.width() - 50);
-    $og.attr('src', me.selectedImages_[0].attr('src'));
-    $diff.attr('src', me.selectedImages_[1].attr('src'));
+    $og.attr('src', $first.attr('src'));
+    $diff.attr('src', $second.attr('src'));
   };
 
   function getWeatherData() {
     var weatherAPI = "http://api.wunderground.com/api/d7d1d3e5894b3fd4/forecast/geolookup/conditions/q/94022.json";
     $.getJSON(weatherAPI)
       .done(function (data) {
-        console.log("judy weater data done");
+        var weatheritems = $('.weather-item');
+
+        var forecasts = data["forecast"]["txt_forecast"]["forecastday"];
+        for (var i = 0; i < weatheritems.length; i++) {
+          var f = forecasts[i];
+          var weatheritem = $(weatheritems[i]);
+          weatheritem.find('.weathericon').attr('src', f["icon_url"]);
+          weatheritem.find('.weatherday').text(f["title"]);
+          weatheritem.find('.weathertext').text(f["fcttext"]);
+        }
       });
   }
 
