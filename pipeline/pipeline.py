@@ -18,5 +18,5 @@ for filename in files:
 
     #ndvi(fullpath, outpath, vmax=10, vmax=1000)
 
-    0cmd = 'infrapix_single -i "%s" -o "%s" --vmin 10 --vmax 10000' % (fullpath, outpath)
+    cmd = 'infrapix_single -i "%s" -o "%s" --vmin 10 --vmax 100' % (fullpath, outpath)
     os.system(cmd)
