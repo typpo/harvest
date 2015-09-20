@@ -28,16 +28,19 @@ function Dashboard() {
       $(this).find('.grid_image_processed').fadeIn(400);;
     });
     $('.image_switcher').mouseleave(function() {
-      $(this).find('.grid_image_normal').stop();
-      $(this).find('.grid_image_normal').fadeIn({
-        duration: 200,
-        queue: false
-      });
-      $(this).find('.grid_image_processed').stop();
-      $(this).find('.grid_image_processed').fadeOut({
-        duration: 200,
-        queue: false
-      });
+      if ($(this).find('.grid_image_normal').length > 0) {
+        $(this).find('.grid_image_normal').stop();
+        $(this).find('.grid_image_normal').fadeIn({
+          duration: 200,
+          queue: false
+        });
+
+        $(this).find('.grid_image_processed').stop();
+        $(this).find('.grid_image_processed').fadeOut({
+          duration: 200,
+          queue: false
+        });
+      }
     });
 
 
