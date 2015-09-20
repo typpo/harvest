@@ -10,7 +10,6 @@ html, body, #wrapper {
   justify-content: flex-start;
   align-content: flex-start;
   align-items: flex-start;
-  padding-top: 50px;
 }
 
 
@@ -83,6 +82,7 @@ html, body, #wrapper {
 
 #page-wrapper {
 height:100%;
+margin-top: 50px;
 }
 
 .grid_image_normal {
