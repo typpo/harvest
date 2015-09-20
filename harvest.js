@@ -11,6 +11,10 @@ app.get('/', function(req, res) {
   serveFile('index.html', res);
 });
 
+app.post('/contact/submit', function(req, res) {
+  console.log(req.body);
+});
+
 function serveFile(path, res) {
   fs.readFile(path, function (err, data){
     res.writeHead(200, {'Content-Type': 'text/html','Content-Length':data.length});
