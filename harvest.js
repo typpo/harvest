@@ -11,8 +11,8 @@ app.get('/', function(req, res) {
   serveFile('index.html', res);
 });
 
-app.post('/contact/submit', function(req, res) {
-  console.log(req.body);
+app.get('/contact', function(req, res) {
+  serveFile('public/contact.html', res);
 });
 
 function serveFile(path, res) {
