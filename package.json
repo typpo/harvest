@@ -3,7 +3,8 @@
   "description": "harvest",
   "version": "0.0.1",
   "scripts": {
-    "start": "node harvest.js"
+    "start": "node harvest.js",
+    "test": "echo 'yarp'"
   },
   "dependencies": {
     "body-parser": "latest",
