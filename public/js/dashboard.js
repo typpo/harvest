@@ -26,8 +26,6 @@ function Dashboard() {
     $('.image_switcher').mouseenter(function() {
       $(this).find('.grid_image_normal').fadeOut(400);
       $(this).find('.grid_image_processed').fadeIn(400);;
-      // $(this).find('.grid_image_normal').css('z-index', 0);
-      // $(this).find('.grid_image_processed').css('z-index', 1);
     });
     $('.image_switcher').mouseleave(function() {
       $(this).find('.grid_image_normal').stop();
@@ -40,8 +38,6 @@ function Dashboard() {
         duration: 200,
         queue: false
       });
-      // $(this).find('.grid_image_normal').css('z-index', 1);
-      // $(this).find('.grid_image_processed').css('z-index', 0);
     });
 
 
