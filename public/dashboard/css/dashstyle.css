@@ -1,5 +1,6 @@
 html, body, #wrapper {
   height: 100%;
+  background-color:white;
 }
 
 .image_container {
@@ -17,7 +18,7 @@ html, body, #wrapper {
   flex-grow: 0;
   flex-shrink: 0;
   width: 300px;
-  height: 286px;
+  height: 250px;
   margin: 16px;
 }
 
