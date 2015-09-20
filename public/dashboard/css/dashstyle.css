@@ -1,5 +1,6 @@
 html, body, #wrapper {
   height: 100%;
+  background-color:white;
 }
 
 .weather-item {
@@ -18,7 +19,6 @@ html, body, #wrapper {
   justify-content: flex-start;
   align-content: flex-start;
   align-items: flex-start;
-  padding-top: 50px;
 }
 
 
@@ -26,7 +26,7 @@ html, body, #wrapper {
   flex-grow: 0;
   flex-shrink: 0;
   width: 300px;
-  height: 286px;
+  height: 250px;
   margin: 16px;
 }
 
@@ -91,6 +91,7 @@ html, body, #wrapper {
 
 #page-wrapper {
 height:100%;
+margin-top: 50px;
 }
 
 .grid_image_normal {
