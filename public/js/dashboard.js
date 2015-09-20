@@ -124,10 +124,10 @@ function Dashboard() {
     $('.cd-image-container').addClass('is-visible');
     var $og = $('#og_img');
     var $diff = $('#diff_img');
-    $og.height($pageWrapper.height() - 50);
-    $og.width($pageWrapper.width() - 50);
-    $diff.height($pageWrapper.height() - 50);
-    $diff.width($pageWrapper.width() - 50);
+    $og.height($pageWrapper.height());
+    $og.width($pageWrapper.width());
+    $diff.height($pageWrapper.height());
+    $diff.width($pageWrapper.width() );
     $og.attr('src', $first.attr('src'));
     $diff.attr('src', $second.attr('src'));
   };
