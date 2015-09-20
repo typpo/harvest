@@ -19,7 +19,7 @@
 	{
 		margin: 0;
 		padding: 0;
-		color: #8dc63f;
+		color: #51791B;
 	}
 
 	p, ol, ul
@@ -39,12 +39,12 @@
 
 	strong
 	{
-		color: #8dc63f;
+		color: #51791B;
 	}
 
 	a
 	{
-		color: #8dc63f;
+		color: #51791B;
 	}
 
 	a:hover
@@ -165,7 +165,7 @@
 		display: inline-block;
 		margin-top: 2em;
 		padding: 1em 2em 1em 2em;
-		background: #8dc63f;
+		background: #51791B;
 		letter-spacing: 0.20em;
 		text-decoration: none;
 		text-transform: uppercase;
@@ -246,7 +246,7 @@
 	#logo a
 	{
 		text-decoration: none;
-		color: #8dc63f;
+		color: #51791B;
 	}
 
 /*********************************************************************************/
@@ -274,7 +274,7 @@
 
 		#menu li:before
 		{
-			content: "//";
+			content: " ";
 			padding: 1em 1.5em;
 			font-weight: 700;
 			color: rgba(0,0,0,.6);
@@ -393,18 +393,18 @@
 /* Featured                                                                      */
 /*********************************************************************************/
 
-	#featured
+	.featured
 	{
 		overflow: hidden;
 		padding: 5em 0em;
 		border-top: 1px solid rgba(0,0,0,0.1);
 	}
 
-  #featured li {
+  .featured li {
     margin-bottom: 3px;
   }
 
-	#featured .align-left
+	.featured .align-left
 	{
 		float: left;
 		width: 384px;
@@ -412,13 +412,13 @@
 		text-align: center;
 	}
 
-	#featured .fa
+	.featured .fa
 	{
 		font-size: 14em;
-		color: #8dc63f;
+		color: #51791B;
 	}
 
-	#featured .align-right
+	.featured .align-right
 	{
 		float: right;
 		width: 792px;
@@ -437,7 +437,7 @@
 	{
 		margin: 0;
 		padding: 1em 5px;
-		background: #8dc63f;
+		background: #51791B;
 		display: block;
 		line-height: 3em;
 		text-align: center;

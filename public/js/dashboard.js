@@ -3,11 +3,34 @@ function Dashboard() {
   var NUMBER_SELECTABLE = 2;
   var SELECTED_GRID_IMAGE_CLASS = 'selected_grid_image';
 
+  var IMAGES = [
+    'IMG_1153.JPG',  'IMG_1189.JPG',  'IMG_1197.JPG',  'IMG_1229.JPG',
+    'IMG_1157.JPG',  'IMG_1191.JPG',  'IMG_1198.JPG',  'IMG_1243.JPG',
+    'IMG_1176.JPG',  'IMG_1194.JPG',  'IMG_1203.JPG',  'IMG_1250.JPG',
+    'IMG_1182.JPG',  'IMG_1196.JPG',  'IMG_1217.JPG',  'IMG_1256.JPG'
+  ];
+  var NORMAL_PATH = '/original/';
+  var PROCESSED_PATH = '/ndvi-hsv/';
+
   Dashboard.prototype.init = function() {
     this.selectedImages_ = [];
     this.$compareButton = $('#compare_button');
     $('.grid_image').click(this.handleGridClick);
     this.$compareButton.click(this.compare);
+
+    var $imageContainer = $('.image_container');
+    for (var i in IMAGES) {
+      $imageContainer.append(this.createGridItem(IMAGES[i]));
+    }
+
+    $('.image_switcher').mouseenter(function() {
+      $(this).find('.grid_image_normal').css('z-index', 0);
+      $(this).find('.grid_image_processed').css('z-index', 1);
+    });
+    $('.image_switcher').mouseleave(function() {
+      $(this).find('.grid_image_normal').css('z-index', 1);
+      $(this).find('.grid_image_processed').css('z-index', 0);
+    });
 
 
     // make the .cd-handle element draggable and modify .cd-resize-img width
@@ -16,6 +39,23 @@ function Dashboard() {
         var actual = $(this);
         drags(actual.find('.cd-handle'), actual.find('.cd-resize-img'), actual);
     });
+    
+    getWeatherData();
+  };
+
+
+  Dashboard.prototype.createGridItem = function(image) {
+    var item = $(
+              '<div class="grid_item">' +
+                '<div class="image_switcher">' +
+                  '<img class="grid_image grid_image_normal" src="' + NORMAL_PATH + image + '">' +
+                  '<img class="grid_image grid_image_processed" src="' + PROCESSED_PATH + image + '">' +
+                '</div>' +
+                '<div class="image_descriptor">' +
+                  '10-23-2014' +
+                '</div>' +
+              '</div>');
+    return item;
   };
 
   Dashboard.prototype.handleGridClick = function(event) {
@@ -74,6 +114,14 @@ function Dashboard() {
     $og.attr('src', me.selectedImages_[0].attr('src'));
     $diff.attr('src', me.selectedImages_[1].attr('src'));
   };
+
+  function getWeatherData() {
+    var weatherAPI = "http://api.wunderground.com/api/d7d1d3e5894b3fd4/forecast/geolookup/conditions/q/94022.json";
+    $.getJSON(weatherAPI)
+      .done(function (data) {
+        console.log("judy weater data done");
+      });
+  }
 
   //draggable funtionality - credits to http://css-tricks.com/snippets/jquery/draggable-without-jquery-ui/
   function drags(dragElement, resizeElement, container) {
