@@ -25,6 +25,8 @@ function Dashboard() {
         var actual = $(this);
         drags(actual.find('.cd-handle'), actual.find('.cd-resize-img'), actual);
     });
+    
+    getWeatherData();
   };
 
 
@@ -84,6 +86,14 @@ function Dashboard() {
     $og.attr('src', me.selectedImages_[0].attr('src'));
     $diff.attr('src', me.selectedImages_[1].attr('src'));
   };
+
+  function getWeatherData() {
+    var weatherAPI = "http://api.wunderground.com/api/d7d1d3e5894b3fd4/forecast/geolookup/conditions/q/94022.json";
+    $.getJSON(weatherAPI)
+      .done(function (data) {
+        console.log("judy weater data done");
+      });
+  }
 
   //draggable funtionality - credits to http://css-tricks.com/snippets/jquery/draggable-without-jquery-ui/
   function drags(dragElement, resizeElement, container) {
