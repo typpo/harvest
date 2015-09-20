@@ -23,7 +23,15 @@ app.get('/contact', function(req, res) {
 });
 
 app.get('/dashboard', function(req, res) {
-  serveFile('public/index.html', res);
+  serveFile('public/dashboard/summary.html', res);
+});
+
+app.get('/dashboard/hotspots', function(req, res) {
+  serveFile('public/dashboard/hotspots.html', res);
+});
+
+app.get('/dashboard/landsat', function(req, res) {
+  serveFile('public/dashboard/landsat.html', res);
 });
 
 function serveFile(path, res) {
