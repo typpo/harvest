@@ -63,8 +63,16 @@ function Dashboard() {
     $('.image_container').hide();
     $('.cd-image-container').show();
 
-    $('#og_img').attr('src', me.selectedImages_[0].attr('src'));
-    $('#diff_img').attr('src', me.selectedImages_[1].attr('src'));
+    var $pageWrapper = $('#page-wrapper');
+    $('.cd-image-container').addClass('is-visible');
+    var $og = $('#og_img');
+    var $diff = $('#diff_img');
+    $og.height($pageWrapper.height() - 50);
+    $og.width($pageWrapper.width() - 50);
+    $diff.height($pageWrapper.height() - 50);
+    $diff.width($pageWrapper.width() - 50);
+    $og.attr('src', me.selectedImages_[0].attr('src'));
+    $diff.attr('src', me.selectedImages_[1].attr('src'));
   };
 
   //draggable funtionality - credits to http://css-tricks.com/snippets/jquery/draggable-without-jquery-ui/
