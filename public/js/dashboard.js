@@ -136,7 +136,16 @@ function Dashboard() {
     var weatherAPI = "http://api.wunderground.com/api/d7d1d3e5894b3fd4/forecast/geolookup/conditions/q/94022.json";
     $.getJSON(weatherAPI)
       .done(function (data) {
-        console.log("judy weater data done");
+        var weatheritems = $('.weather-item');
+
+        var forecasts = data["forecast"]["txt_forecast"]["forecastday"];
+        for (var i = 0; i < weatheritems.length; i++) {
+          var f = forecasts[i];
+          var weatheritem = $(weatheritems[i]);
+          weatheritem.find('.weathericon').attr('src', f["icon_url"]);
+          weatheritem.find('.weatherday').text(f["title"]);
+          weatheritem.find('.weathertext').text(f["fcttext"]);
+        }
       });
   }
 
