@@ -12,7 +12,7 @@ def gen_diff(args):
   b = misc.imread(args[1])
   output = a - b
   # print output.max(), output.min()
-  if args[2]:
+  if len(args) == 3:
     misc.imsave(args[2],output)
   else:
     plt.imshow(output)
