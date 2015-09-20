@@ -10,6 +10,10 @@ html, body, #wrapper {
   margin-bottom: 10px;
 }
 
+.weathertext {
+  line-height: 1.3;
+}
+
 .weather-row {
   margin-top: 2em;
 }
