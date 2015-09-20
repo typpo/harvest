@@ -13,15 +13,15 @@ function Dashboard() {
   var PROCESSED_PATH = '/ndvi-hsv/';
 
   Dashboard.prototype.init = function() {
-    this.selectedImages_ = [];
+    this.selectedItems_ = [];
     this.$compareButton = $('#compare_button');
-    $('.grid_image').click(this.handleGridClick);
     this.$compareButton.click(this.compare);
 
     var $imageContainer = $('.image_container');
     for (var i in IMAGES) {
       $imageContainer.append(this.createGridItem(IMAGES[i]));
     }
+    $('.grid_item').click(this.handleGridClick);
 
     $('.image_switcher').mouseenter(function() {
       $(this).find('.grid_image_normal').css('z-index', 0);
@@ -57,28 +57,29 @@ function Dashboard() {
   };
 
   Dashboard.prototype.handleGridClick = function(event) {
-    var $img = $(event.target);
+    var $gridItem = $(event.target);
+    var $img = $gridItem.find('.grid_image_processed');
     var toRemove = -1;
-    for (var i in me.selectedImages_) {
-      var $otherImg = me.selectedImages_[i];
-      if ($img[0] == $otherImg[0]) {
+    for (var i in me.selectedItems_) {
+      var $otherItem = me.selectedItems_[i];
+      if ($gridItem[0] == $otherItem[0]) {
         toRemove = i;
         break;
       }
     }
     if (toRemove != -1) {
-      me.selectedImages_.splice(toRemove, 1);
-      $img.removeClass(SELECTED_GRID_IMAGE_CLASS);
+      me.selectedItems_.splice(toRemove, 1);
+      $gridItem.removeClass(SELECTED_GRID_IMAGE_CLASS);
       me.hideCompare();
       return;
     }
-    $img.addClass(SELECTED_GRID_IMAGE_CLASS);
-    if (me.selectedImages_.length >= NUMBER_SELECTABLE) {
-      var unselect = me.selectedImages_.splice(0,1)[0];
+    $gridItem.addClass(SELECTED_GRID_IMAGE_CLASS);
+    if (me.selectedItems_.length >= NUMBER_SELECTABLE) {
+      var unselect = me.selectedItems_.splice(0,1)[0];
       unselect.removeClass(SELECTED_GRID_IMAGE_CLASS);
     }
-    me.selectedImages_.push($img);
-    if (me.selectedImages_.length == NUMBER_SELECTABLE) {
+    me.selectedItems_.push($gridItem);
+    if (me.selectedItems_.length == NUMBER_SELECTABLE) {
       me.showCompare();
     }
   };
@@ -95,7 +96,7 @@ function Dashboard() {
 
 
   Dashboard.prototype.compare = function() {
-    if (me.selectedImages_.length != NUMBER_SELECTABLE) {
+    if (me.selectedItems_.length != NUMBER_SELECTABLE) {
       return;
     }
     $('.image_container').hide();
@@ -109,8 +110,8 @@ function Dashboard() {
     $og.width($pageWrapper.width() - 50);
     $diff.height($pageWrapper.height() - 50);
     $diff.width($pageWrapper.width() - 50);
-    $og.attr('src', me.selectedImages_[0].attr('src'));
-    $diff.attr('src', me.selectedImages_[1].attr('src'));
+    $og.attr('src', me.selectedItems_[0].attr('src'));
+    $diff.attr('src', me.selectedItems_[1].attr('src'));
   };
 
   //draggable funtionality - credits to http://css-tricks.com/snippets/jquery/draggable-without-jquery-ui/
