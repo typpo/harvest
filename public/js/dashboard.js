@@ -125,9 +125,9 @@ function Dashboard() {
     var $og = $('#og_img');
     var $diff = $('#diff_img');
     $og.height($pageWrapper.height());
-    $og.width($pageWrapper.width());
+    $og.width(1024);
     $diff.height($pageWrapper.height());
-    $diff.width($pageWrapper.width() );
+    $diff.width(1024);
     $og.attr('src', $first.attr('src'));
     $diff.attr('src', $second.attr('src'));
   };
