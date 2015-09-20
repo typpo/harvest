@@ -393,18 +393,18 @@
 /* Featured                                                                      */
 /*********************************************************************************/
 
-	#featured
+	.featured
 	{
 		overflow: hidden;
 		padding: 5em 0em;
 		border-top: 1px solid rgba(0,0,0,0.1);
 	}
 
-  #featured li {
+  .featured li {
     margin-bottom: 3px;
   }
 
-	#featured .align-left
+	.featured .align-left
 	{
 		float: left;
 		width: 384px;
@@ -412,13 +412,13 @@
 		text-align: center;
 	}
 
-	#featured .fa
+	.featured .fa
 	{
 		font-size: 14em;
 		color: #8dc63f;
 	}
 
-	#featured .align-right
+	.featured .align-right
 	{
 		float: right;
 		width: 792px;
