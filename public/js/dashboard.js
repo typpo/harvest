@@ -24,12 +24,20 @@ function Dashboard() {
     $('.grid_item').click(this.handleGridClick);
 
     $('.image_switcher').mouseenter(function() {
-      $(this).find('.grid_image_normal').css('z-index', 0);
-      $(this).find('.grid_image_processed').css('z-index', 1);
+      $(this).find('.grid_image_normal').fadeOut(400);
+      $(this).find('.grid_image_processed').fadeIn(400);;
     });
     $('.image_switcher').mouseleave(function() {
-      $(this).find('.grid_image_normal').css('z-index', 1);
-      $(this).find('.grid_image_processed').css('z-index', 0);
+      $(this).find('.grid_image_normal').stop();
+      $(this).find('.grid_image_normal').fadeIn({
+        duration: 200,
+        queue: false
+      });
+      $(this).find('.grid_image_processed').stop();
+      $(this).find('.grid_image_processed').fadeOut({
+        duration: 200,
+        queue: false
+      });
     });
 
 
@@ -52,7 +60,6 @@ function Dashboard() {
                   '<img class="grid_image grid_image_processed" src="' + PROCESSED_PATH + image + '">' +
                 '</div>' +
                 '<div class="image_descriptor">' +
-                  '10-23-2014' +
                 '</div>' +
               '</div>');
     return item;
