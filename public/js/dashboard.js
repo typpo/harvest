@@ -3,6 +3,15 @@ function Dashboard() {
   var NUMBER_SELECTABLE = 2;
   var SELECTED_GRID_IMAGE_CLASS = 'selected_grid_image';
 
+  var IMAGES = [
+    'IMG_1153.JPG',  'IMG_1189.JPG',  'IMG_1197.JPG',  'IMG_1229.JPG',
+    'IMG_1157.JPG',  'IMG_1191.JPG',  'IMG_1198.JPG',  'IMG_1243.JPG',
+    'IMG_1176.JPG',  'IMG_1194.JPG',  'IMG_1203.JPG',  'IMG_1250.JPG',
+    'IMG_1182.JPG',  'IMG_1196.JPG',  'IMG_1217.JPG',  'IMG_1256.JPG'
+  ];
+  var NORMAL_PATH = '/images/normal/';
+  var PROCESSED_PATH = '/images/processed/';
+
   Dashboard.prototype.init = function() {
     this.selectedImages_ = [];
     this.$compareButton = $('#compare_button');
@@ -17,6 +26,7 @@ function Dashboard() {
         drags(actual.find('.cd-handle'), actual.find('.cd-resize-img'), actual);
     });
   };
+
 
   Dashboard.prototype.handleGridClick = function(event) {
     var $img = $(event.target);
