@@ -7,6 +7,9 @@ var app = express();
 app.use(bodyParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+app.use('/original', express.static(path.join(__dirname, 'pipeline/images/original/select')));
+app.use('/ndvi-hsv', express.static(path.join(__dirname, 'pipeline/images/processed-ndvi-hsv')));
+
 app.get('/', function(req, res) {
   serveFile('index.html', res);
 });
