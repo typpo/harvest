@@ -5,14 +5,14 @@ import os
 
 PIPELINE_DIR = os.path.dirname(os.path.realpath(__file__))
 
-outdir = os.path.join(PIPELINE_DIR, 'images/processed-ndvi/')
+outdir = os.path.join(PIPELINE_DIR, 'images/processed-ndvi/select')
 os.system('rm -rf "%s"' % outdir)
-os.system('mkdir "%s"' % outdir)
+os.system('mkdir -p "%s"' % outdir)
 
-files = os.listdir(os.path.join(PIPELINE_DIR, 'images/original'))
+files = os.listdir(os.path.join(PIPELINE_DIR, 'images/original/select'))
 for filename in files:
-    fullpath = os.path.join(PIPELINE_DIR, 'images/original/', filename)
-    outpath = os.path.join(PIPELINE_DIR, 'images/processed-ndvi/', filename)
+    fullpath = os.path.join(PIPELINE_DIR, 'images/original/select', filename)
+    outpath = os.path.join(PIPELINE_DIR, 'images/processed-ndvi/select', filename)
 
     print fullpath, '-->', outpath
 
