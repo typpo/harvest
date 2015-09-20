@@ -9,14 +9,28 @@ function Dashboard() {
     'IMG_1176.JPG',  'IMG_1194.JPG',  'IMG_1203.JPG',  'IMG_1250.JPG',
     'IMG_1182.JPG',  'IMG_1196.JPG',  'IMG_1217.JPG',  'IMG_1256.JPG'
   ];
-  var NORMAL_PATH = '/images/normal/';
-  var PROCESSED_PATH = '/images/processed/';
+  var NORMAL_PATH = '/original/';
+  var PROCESSED_PATH = '/ndvi-hsv/';
 
   Dashboard.prototype.init = function() {
     this.selectedImages_ = [];
     this.$compareButton = $('#compare_button');
     $('.grid_image').click(this.handleGridClick);
     this.$compareButton.click(this.compare);
+
+    var $imageContainer = $('.image_container');
+    for (var i in IMAGES) {
+      $imageContainer.append(this.createGridItem(IMAGES[i]));
+    }
+
+    $('.image_switcher').mouseenter(function() {
+      $(this).find('.grid_image_normal').css('z-index', 0);
+      $(this).find('.grid_image_processed').css('z-index', 1);
+    });
+    $('.image_switcher').mouseleave(function() {
+      $(this).find('.grid_image_normal').css('z-index', 1);
+      $(this).find('.grid_image_processed').css('z-index', 0);
+    });
 
 
     // make the .cd-handle element draggable and modify .cd-resize-img width
@@ -27,6 +41,20 @@ function Dashboard() {
     });
   };
 
+
+  Dashboard.prototype.createGridItem = function(image) {
+    var item = $(
+              '<div class="grid_item">' +
+                '<div class="image_switcher">' +
+                  '<img class="grid_image grid_image_normal" src="' + NORMAL_PATH + image + '">' +
+                  '<img class="grid_image grid_image_processed" src="' + PROCESSED_PATH + image + '">' +
+                '</div>' +
+                '<div class="image_descriptor">' +
+                  '10-23-2014' +
+                '</div>' +
+              '</div>');
+    return item;
+  };
 
   Dashboard.prototype.handleGridClick = function(event) {
     var $img = $(event.target);
