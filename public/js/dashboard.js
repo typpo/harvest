@@ -39,7 +39,7 @@ function Dashboard() {
         var actual = $(this);
         drags(actual.find('.cd-handle'), actual.find('.cd-resize-img'), actual);
     });
-    
+
     getWeatherData();
   };
 
@@ -59,7 +59,8 @@ function Dashboard() {
   };
 
   Dashboard.prototype.handleGridClick = function(event) {
-    var $gridItem = $(event.target);
+    // hack to get grid item
+    var $gridItem = $(event.target).parent().parent();
     var $img = $gridItem.find('.grid_image_processed');
     var toRemove = -1;
     for (var i in me.selectedItems_) {
@@ -112,8 +113,10 @@ function Dashboard() {
     $og.width($pageWrapper.width() - 50);
     $diff.height($pageWrapper.height() - 50);
     $diff.width($pageWrapper.width() - 50);
-    $og.attr('src', me.selectedItems_[0].attr('src'));
-    $diff.attr('src', me.selectedItems_[1].attr('src'));
+    var $first = me.selectedItems_[0].find('.grid_image_processed');
+    var $second = me.selectedItems_[1].find('.grid_image_processed');
+    $og.attr('src', $first.attr('src'));
+    $diff.attr('src', $second.attr('src'));
   };
 
   function getWeatherData() {
