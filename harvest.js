@@ -22,6 +22,14 @@ app.get('/contact', function(req, res) {
   serveFile('public/contact.html', res);
 });
 
+app.post('/contact', function(req, res) {
+  console.log(req.body);
+  fs.appendFile('log.txt', JSON.stringify(req.body) + '\n', encoding='utf8', function (err) {
+      if (err) throw err;
+  });
+  serveFile('public/contact.html', res);
+});
+
 app.get('/dashboard', function(req, res) {
   serveFile('public/dashboard/summary.html', res);
 });
@@ -33,6 +41,7 @@ app.get('/dashboard/hotspots', function(req, res) {
 app.get('/dashboard/landsat', function(req, res) {
   serveFile('public/dashboard/landsat.html', res);
 });
+
 
 function serveFile(path, res) {
   fs.readFile(path, function(err, data) {

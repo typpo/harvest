@@ -17,22 +17,46 @@
 <body>
   <div id="header" class="container">
     <div id="logo">
-      <h1><a href="#">Harvest</a></h1>
+      <h1><a href="/">Harvest</a></h1>
     </div>
     <div id="menu">
       <ul>
         <li><a href="/" accesskey="1" title="">Homepage</a></li>
-        <li class="active"><a href="#contact" accesskey="5" title="">Contact Us</a></li>
+        <li class="active"><a href="/contact" accesskey="5" title="">Contact Us</a></li>
         <li><a href="/dashboard" accesskey="6" title="">Dashboard</a></li>
       </ul>
     </div>
   </div>
   <div id="featured" class="container">
-    <div class="col-sm-12" style='text-align: center;'>
-      <h2 style='color: #000;'> CONTACT US </h2>
-      <form>
+    <div class="col-sm-12">
+      <h2 style='color: #000; text-align: center;'> CONTACT US </h2>
+      <container class="col-sm-12" style="text-align:center; margin-top: 100px;">
+                <div style='margin-top:30px;'></div>
+               <form id='contactform' method="post" action="/contact" autocomplete="off" class="auth-form">
+                 <input type="hidden" name="action" value="contact" style='width:300px;'/>
+                 <div class="form-groups">
+                   <label for="name" class="sr-only">Name</label>
+                   <div class="form-group">
+                     <input type="text" name="name" placeholder="Name" required="required" class="form-control" style='width:300px;'/>
+                   </div>
+                   <label for="email" class="sr-only">Email</label>
 
-      </form>rr
+                   <div class="form-group margin-top-25">
+                     <input type="email" name="email" placeholder="Email" required="required" class="form-control" style='width:300px;'/>
+                   </div>
+                   <label for="phone" class="sr-only">Phone (optional)</label>
+                   <div class="form-group margin-top-25">
+                     <input type="text" name="phone" placeholder="Phone (optional)" class="form-control" style='width:300px;'/>
+                   </div>
+                   <label for="message" class="sr-only">Leave us a message...</label>
+                   <div class="form-group margin-top-25">
+                     <textarea style="height: 200px; width: 300px;" name="message" placeholder="Leave us a message..." rows="4" class="form-control"></textarea>
+                   </div>
+                 </div>
+                 <button id='button' type="submit" class="btn btn-block">SEND</button>
+               </form>
+         </container>
+         <div style='margin-top:50px;'></div>
     </div>
   </div>
 
