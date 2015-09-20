@@ -25,7 +25,7 @@
 .selected_grid_image {
   outline: none;
   border-color: #9ecaed;
-  box-shadow: 0 0 20px #9ecaed;
+  box-shadow: 0 0 20px black;
 }
 
 .image_descriptor {
@@ -34,4 +34,43 @@
   font-weight: bold;
   margin: auto;
   text-align: center;
+}
+
+#compare_button {
+  display: block;
+  margin: auto;
+  float: none;
+  height: 50px;
+  padding: 15px;
+  font-size: 18px;
+  line-height: 20px;
+  color: red;
+}
+
+.cd-resize-img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 0;
+  overflow: hidden;
+  /* Force Hardware Acceleration in WebKit */
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
+.is-visible .cd-resize-img {
+  width: 50%;
+  /* bounce in animation of the modified image */
+  animation: cd-bounce-in 0.7s;
+}
+@keyframes cd-bounce-in {
+  0% {
+    width: 0;
+  }
+  60% {
+    width: 55%;
+  }
+  100% {
+    width: 50%;
+  }
 }
