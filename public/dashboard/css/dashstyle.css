@@ -3,6 +3,17 @@ html, body, #wrapper {
   background-color:white;
 }
 
+.weatherday {
+  text-transform: UPPERCASE;
+  color: #999;
+  font-size: 12px;
+  margin-bottom: 10px;
+}
+
+.weather-row .panel {
+  height: 140px;
+}
+
 .weather-item {
   padding-left: 2px;
   padding-right: 2px;
