@@ -10,8 +10,13 @@ html, body, #wrapper {
   margin-bottom: 10px;
 }
 
+.weather-row {
+  margin-top: 2em;
+}
+
 .weather-row .panel {
-  height: 140px;
+  height: 120px;
+  -webkit-box-shadow: none;
 }
 
 .weather-item {
